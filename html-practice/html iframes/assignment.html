@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Student Name">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3 - Combined</title>
+    <base href="https://example.com/">
+    <link rel="icon" href="favicon.ico">
+    <style></style>
+    <script></script>
+</head>
+<body>
+
+<!-- Q1: YouTube Video -->
+<h2>Q1: YouTube Video</h2>
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" width="80%" height="50%"></iframe>
+
+<!-- Q2: Google Map -->
+<h2>Q2: Google Map</h2>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!..." title="My City Map" width="80%" height="400" loading="lazy"></iframe>
+<!-- loading="lazy" delays loading until needed -->
+
+<!-- Q3: Two Iframes -->
+<h2>Q3: Two Iframes</h2>
+<iframe src="intro.html" width="80%" height="200"></iframe><br>
+<iframe src="hobby.html" width="80%" height="200"></iframe>
+
+<!-- Q4: Frameset -->
+<h2>Q4: Frameset</h2>
+<frameset rows="20%,80%">
+    <frame src="nav.html">
+    <frame src="welcome.html">
+</frameset>
+
+<!-- Q5: UTF-8 Encoding -->
+<h2>Q5: UTF-8 Encoding</h2>
+<p>English: Hello World<br>Hindi: नमस्ते दुनिया<br>Japanese: こんにちは世界</p>
+
+<!-- Q6: Registration Form -->
+<h2>Q6: Registration Form</h2>
+<form>
+    <input type="text" name="fullname" placeholder="Full Name" required><br>
+    <input type="email" name="email" placeholder="Email" required><br>
+    <input type="password" name="password" placeholder="Password" required><br>
+    <input type="password" name="confirm" placeholder="Confirm Password" required><br>
+    <button type="submit">Register</button>
+</form>
+
+<!-- Q7: Login Form -->
+<h2>Q7: Login Form</h2>
+<form>
+    <input type="text" name="username" placeholder="Username" required><br>
+    <input type="password" name="password" placeholder="Password" required><br>
+    <input type="hidden" name="csrf" value="dummyToken123">
+    <!-- CSRF token prevents cross-site request forgery -->
+    <button type="submit">Login</button>
+</form>
+
+<!-- Q8: Feedback Form -->
+<h2>Q8: Feedback Form</h2>
+<form method="post" action="#">
+    <textarea name="feedback" placeholder="Your feedback"></textarea><br>
+    <input type="radio" name="rating" value="Good"> Good
+    <input type="radio" name="rating" value="Average"> Average
+    <input type="radio" name="rating" value="Poor"> Poor<br>
+    <button type="submit">Submit</button>
+</form>
+
+<!-- Q9: File Upload -->
+<h2>Q9: File Upload</h2>
+<form>
+    <input type="file" accept=".jpg,.png" required><br>
+    <p>Only .jpg and .png files are allowed.</p>
+</form>
+
+<!-- Q10: Contact Form -->
+<h2>Q10: Contact Form</h2>
+<form>
+    <input type="text" name="fullname" placeholder="Full Name" required><br>
+    <input type="email" name="email" placeholder="Email" required><br>
+    <input type="text" name="subject" placeholder="Subject" required><br>
+    <textarea name="message" placeholder="Message" required></textarea><br>
+    <button type="submit">Send</button>
+</form>
+
+<!-- Q11: Student Info -->
+<h2>Q11: Student Info</h2>
+<form>
+    <input type="text" name="name" placeholder="Name" required><br>
+    <input type="text" name="roll" placeholder="Roll Number" required><br>
+    <select name="course" required>
+        <option value="" disabled selected>Select Course</option>
+        <option value="CS">Computer Science</option>
+        <option value="Math">Mathematics</option>
+    </select><br>
+    <button type="submit">Submit</button>
+</form>
+
+<!-- Q12: HTML Entities -->
+<h2>Q12: HTML Entities</h2>
+<p>&lt; &gt; &amp; &quot; &apos; &#64; &trade; &reg;</p>
+
+<!-- Q13: Multilingual Text -->
+<h2>Q13: Multilingual Text</h2>
+<p>English: Hello<br>Hindi: नमस्ते<br>French: Bonjour</p>
+
+<!-- Q14: External Website -->
+<h2>Q14: External Website</h2>
+<iframe src="https://www.wikipedia.org" width="80%" height="400"></iframe>
+<p>Some websites may not allow embedding for security reasons.</p>
+
+<!-- Q15: Payment Form -->
+<h2>Q15: Payment Form</h2>
+<form>
+    <input type="text" name="cardname" placeholder="Cardholder Name" required><br>
+    <input type="text" name="cardnumber" placeholder="Card Number" required><br>
+    <input type="text" name="expiry" placeholder="Expiry Date" required><br>
+    <input type="password" name="cvv" placeholder="CVV" required><br>
+    <button type="submit">Pay Now</button>
+</form>
+
+<!-- Q16: URI Encoding -->
+<h2>Q16: URI Encoding</h2>
+<p>Original: https://example.com/search?query=HTML & CSS</p>
+<p>Encoded: <a href="https://example.com/search?query=HTML%20%26%20CSS">Encoded Link</a></p>
+
+<!-- Q17: Form with Iframe -->
+<h2>Q17: Form with Iframe</h2>
+<form target="resultFrame">
+    <input type="text" name="text"><br>
+    <button type="submit">Submit</button>
+</form>
+<iframe name="resultFrame" src="result.html" width="80%" height="100"></iframe>
+
+<!-- Q18: Quotes -->
+<h2>Q18: Quotes</h2>
+<blockquote>“This is a long quotation demonstrating blockquote usage.”</blockquote>
+<p>He said <q>This is a short quote &amp; example</q>.</p>
+
+<!-- Q19: Form Security -->
+<h2>Q19: Form Security</h2>
+<form autocomplete="off">
+    <input type="text" name="username" required><br>
+    <input type="password" name="password" required><br>
+    <button type="submit">Login</button>
+</form>
+<p>Turning off autocomplete can improve security by preventing stored credentials from being auto-filled.</p>
+
+<!-- Q20: Head Elements Explanation -->
+<h2>Q20: Head Elements Explanation</h2>
+<p>
+<title> defines page title.<br>
+<meta> provides metadata.<br>
+<base> sets base URL.<br>
+<link> connects external resources.<br>
+<style> allows internal CSS.<br>
+<script> allows JavaScript.<br>
+</p>
+
+</body>
+</html>
