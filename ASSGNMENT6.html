@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment 6 - Flexbox & Grid</title>
+  <style>
+    body { margin:0; font-family:Arial, sans-serif; }
+    header, footer { background:#222; color:#fff; padding:1em; text-align:center; }
+
+    /* 1. Portfolio Flexbox */
+    #portfolio header { display:flex; justify-content:space-between; align-items:center; }
+    #portfolio main { display:flex; justify-content:center; align-items:center; padding:20px; }
+    #portfolio img { width:200px; border-radius:50%; }
+    @media(max-width:700px){ #portfolio main{flex-direction:column;} #portfolio header{flex-direction:column;} }
+
+    /* 2. Product Gallery Grid */
+    #gallery { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; padding:20px; }
+    .product { background:#eee; padding:20px; text-align:center; transition:0.3s; }
+    .product:hover { transform:scale(1.05); }
+    @media(max-width:900px){ #gallery{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:600px){ #gallery{grid-template-columns:1fr;} }
+
+    /* 3. Homepage Flexbox */
+    #homepage header { display:flex; justify-content:space-around; background:#444; padding:1em; }
+    #homepage main { display:flex; justify-content:space-around; padding:20px; }
+    #homepage .box { background:#ddd; padding:20px; transition:0.3s; }
+    #homepage .box:hover { transform:rotate(2deg); }
+    #homepage footer { background:#444; color:#fff; padding:1em; }
+
+    /* 4. Dashboard Grid */
+    #dashboard { display:grid; grid-template-columns:200px 1fr; grid-template-rows:auto 1fr; grid-gap:20px; padding:20px; }
+    #dashboard header { grid-column:1/3; background:#333; color:#fff; padding:1em; }
+    #dashboard aside { background:#eee; padding:20px; }
+    #dashboard main { display:grid; grid-template-columns:1fr 1fr; grid-gap:20px; }
+    .dbox { background:#ddd; padding:20px; transition:0.3s; }
+    .dbox:hover { transform:scale(1.05); box-shadow:2px 2px 5px #aaa; }
+    .span2 { grid-column:span 2; }
+
+    /* 5. Pricing Flexbox */
+    #pricing { display:flex; justify-content:center; padding:20px; }
+    .card { background:#eee; margin:10px; padding:20px; flex:1; transition:0.3s; animation:fadein 1s; }
+    .card:hover { transform:translateY(-10px); }
+    .highlight { background:#ffd; flex:1.2; }
+    @keyframes fadein { from{opacity:0;} to{opacity:1;} }
+    @media(max-width:750px){ #pricing{flex-direction:column;} }
+
+    /* 6. Blog Grid */
+    #blog { display:grid; grid-template-areas:"header header" "sidebar main" "footer footer"; grid-template-columns:200px 1fr; gap:20px; padding:20px; }
+    #blog header { grid-area:header; background:#333; color:#fff; padding:1em; }
+    #blog aside { grid-area:sidebar; background:#eee; padding:20px; }
+    #blog main { grid-area:main; display:flex; gap:20px; }
+    #blog footer { grid-area:footer; background:#333; color:#fff; padding:1em; }
+    @media(max-width:800px){ #blog{grid-template-areas:"header" "main" "sidebar" "footer"; grid-template-columns:1fr;} }
+
+    /* 7. Loading Animation */
+    #loading { display:flex; justify-content:center; align-items:center; height:200px; gap:10px; }
+    .circle { width:20px; height:20px; background:#333; border-radius:50%; animation:bounce 0.6s infinite alternate; }
+    .circle:nth-child(2){ animation-delay:0.2s; }
+    .circle:nth-child(3){ animation-delay:0.4s; }
+    @keyframes bounce { from{transform:translateY(0);} to{transform:translateY(-20px);} }
+
+    /* 8. Photo Gallery Grid */
+    #photos { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; padding:20px; }
+    figure { margin:0; }
+    #photos img { width:100%; transition:transform 0.5s ease; }
+    #photos img:hover { transform:scale(1.1); }
+    figcaption { text-align:center; padding:5px; }
+
+    /* 9. Card Flip */
+    #flip { display:flex; justify-content:center; align-items:center; height:300px; perspective:1000px; }
+    .cardflip { width:200px; height:300px; position:relative; transform-style:preserve-3d; transition:transform 0.8s; }
+    .cardflip:hover { transform:rotateY(180deg); }
+    .front, .back { position:absolute; width:100%; height:100%; backface-visibility:hidden; display:flex; justify-content:center; align-items:center; }
+    .front { background:#eee; }
+    .back { background:#ccc; transform:rotateY(180deg); }
+
+    /* 10. Responsive Flex+Grid */
+    #combo header { display:flex; justify-content:space-between; align-items:center; background:#222; color:#fff; padding:1em; }
+    #combo main { display:grid; grid-template-columns:2fr 1fr; gap:20px; padding:20px; }
+    #combo article { display:flex; gap:20px; }
+    #combo article div { background:#ddd; flex:1; padding:20px; }
+    #combo footer { background:#222; color:#fff; text-align:center; padding:1em; }
+    .fade { animation:fadeup 2s; }
+    @keyframes fadeup { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+    @media(max-width:700px){ #combo main{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+
+<section id="portfolio">
+  <header><h2>My Portfolio</h2><nav><a href="#">Home</a><a href="#">About</a><a href="#">Contact</a></nav></header>
+  <main><p>About Me text...</p><img src="profile.jpg" alt="Profile"></main>
+  <footer>&copy; 2026</footer>
+</section>
+
+<section id="gallery">
+  <div class="product">Product 1 - $10</div>
+  <div class="product">Product 2 - $20</div>
+  <div class="product">Product 3 - $30</div>
+  <div class="product">Product 4 - $40</div>
+  <div class="product">Product 5 - $50</div>
+  <div class="product">Product 6 - $60</div>
+  <div class="product">Product 7 - $70</div>
+  <div class="product">Product 8 - $80</div>
+</section>
+
+<section id="homepage">
+  <header><a href="#">Home</a><a href="#">Projects</a><a href="#">Contact</a></header>
+  <main><div class="box">Services</div><div class="box">Projects</div><div class="box">Contact</div></main>
+  <footer>Footer</footer>
+</section>
+
+<section id="dashboard">
+  <header>Dashboard Header</header>
+  <aside>Sidebar Nav</aside>
+  <main>
+    <div class="dbox">Box 1</div>
+    <div class="dbox">Box 2</div>
+    <div class="dbox span2">Box spanning 2 columns</div>
+    <div class="dbox">Box 4</div>
+  </main>
+</section>
+
+<section id="pricing">
+  <div class="card">Basic</div>
+  <div class="card highlight">Standard</div>
+  <div class="card">Premium</div>
+</section>
+
+<section id="blog">
+  <header>Blog Header</header>
+  <aside>Categories</aside>
+  <main><div>Post 1</div><div>Post 2</div></main>
+  <footer>Contact Info</footer>
+</section>
+
+<section id="loading">
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle">
+      <div class="circle"></div>
+</section>
+
+<section id="photos">
+  <figure>
+    <img src="photo1.jpg" alt="Photo 1">
+    <figcaption>Caption 1</figcaption>
+  </figure>
+  <figure>
+    <img src="photo2.jpg" alt="Photo 2">
+    <figcaption>Caption 2</figcaption>
+  </figure>
+  <figure>
+    <img src="photo3.jpg" alt="Photo 3">
+    <figcaption>Caption 3</figcaption>
+  </figure>
+</section>
+
+<section id="flip">
+  <div class="cardflip">
+    <div class="front">
+      <h3>Front Side</h3>
+      <img src="front.jpg" alt="Front">
+    </div>
+    <div class="back">
+      <p>Back side description text goes here.</p>
+    </div>
+  </div>
+</section>
+
+<section id="combo">
+  <header>
+    <h2 class="fade">Logo</h2>
+    <nav><a href="#">Home</a><a href="#">About</a><a href="#">Contact</a></nav>
+  </header>
+  <main>
+    <article>
+      <div>Box 1</div>
+      <div>Box 2</div>
+      <div>Box 3</div>
+    </article>
+    <aside>Sidebar content</aside>
+  </main>
+  <footer>&copy; 2026 Responsive Layout</footer>
+</section>
+
+</body>
+</html>
