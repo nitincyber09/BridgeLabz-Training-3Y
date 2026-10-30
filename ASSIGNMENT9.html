@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Assignment - All Questions</title>
+
+    <style>
+        /* =========================================================
+           GLOBAL STYLES
+        ========================================================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        header h1 {
+            margin-bottom: 8px;
+        }
+
+        main {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+
+        section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        section h2 {
+            color: #1e293b;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        footer {
+            background: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+
+        /* =========================================================
+           QUESTION 1 - PSEUDO CLASSES
+        ========================================================= */
+
+        .pseudo-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .pseudo-box {
+            flex: 1;
+            min-width: 220px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .pseudo-box a {
+            display: inline-block;
+            color: #2563eb;
+            text-decoration: none;
+            margin: 10px;
+            transition: 0.3s;
+        }
+
+        /* :hover */
+        .pseudo-box a:hover {
+            color: white;
+            background: #2563eb;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        /* :focus */
+        .pseudo-box input:focus {
+            outline: 3px solid #60a5fa;
+            border-color: #2563eb;
+        }
+
+        .pseudo-box input {
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+        }
+
+        /* :active */
+        .pseudo-box button:active {
+            transform: scale(0.9);
+            background: #dc2626;
+        }
+
+        .pseudo-box button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #2563eb;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* :nth-child() */
+        .nth-list {
+            list-style: none;
+        }
+
+        .nth-list li {
+            padding: 8px;
+            margin: 4px;
+            background: #e2e8f0;
+            border-radius: 5px;
+        }
+
+        .nth-list li:nth-child(odd) {
+            background: #bfdbfe;
+        }
+
+
+        /* =========================================================
+           QUESTION 2 - TOOLTIP
+        ========================================================= */
+
+        .tooltip-container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            padding: 15px 25px;
+            background: #2563eb;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .tooltip-text {
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #111827;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            white-space: nowrap;
+
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .tooltip:hover .tooltip-text {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        /* =========================================================
+           QUESTION 3 - IMAGE SHOWCASE
+        ========================================================= */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        figure {
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            background: white;
+        }
+
+        .image-box {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0);
+            transition: background 0.3s ease;
+        }
+
+        figure:hover img {
+            transform: scale(1.1);
+        }
+
+        figure:hover .image-overlay {
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        figcaption {
+            text-align: center;
+            padding: 12px;
+            font-weight: bold;
+        }
+
+
+        /* =========================================================
+           QUESTION 4 - SELECTORS
+        ========================================================= */
+
+        .selector-area {
+            padding: 20px;
+            background: #f8fafc;
+        }
+
+        /* Element selector */
+        .selector-area p {
+            margin-bottom: 10px;
+        }
+
+        /* Class selector */
+        .highlight {
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* ID selector */
+        #special-text {
+            background: #fef3c7;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Attribute selector */
+        a[target="_blank"] {
+            color: #dc2626;
+        }
+
+        /* Child combinator > */
+        .selector-list > li {
+            margin: 5px;
+        }
+
+        /* Adjacent sibling + */
+        .selector-list + p {
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        /* General sibling ~ */
+        .sibling-test ~ p {
+            color: #9333ea;
+        }
+
+        /* Descendant selector */
+        .selector-area div p {
+            font-style: italic;
+        }
+
+
+        /* =========================================================
+           QUESTION 5 - BUTTON COLLECTION
+        ========================================================= */
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            font-weight: bold;
+        }
+
+        .primary {
+            border: none;
+            background: #2563eb;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-3px);
+        }
+
+        .secondary {
+            border: none;
+            background: #64748b;
+            color: white;
+        }
+
+        .secondary:hover {
+            background: #475569;
+        }
+
+        .outline {
+            border: 2px solid #2563eb;
+            background: transparent;
+            color: #2563eb;
+        }
+
+        .outline:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn:focus {
+            outline: 3px solid #93c5fd;
+            outline-offset: 3px;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn:disabled {
+            background: #cbd5e1;
+            color: #64748b;
+            border: none;
+            cursor: not-allowed;
+        }
+
+
+        /* =========================================================
+           QUESTION 6 - CSS ANIMATIONS
+        ========================================================= */
+
+        .animation-container {
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .moving-box {
+            width: 60px;
+            height: 60px;
+            background: #2563eb;
+            border-radius: 10px;
+
+            animation: moveBox 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes moveBox {
+            from {
+                transform: translateX(-100px);
+            }
+
+            to {
+                transform: translateX(100px);
+            }
+        }
+
+        .ball {
+            width: 60px;
+            height: 60px;
+            background: #dc2626;
+            border-radius: 50%;
+
+            animation: bounce 1s ease-in-out infinite alternate;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes bounce {
+            from {
+                transform: translateY(-40px);
+            }
+
+            to {
+                transform: translateY(40px);
+            }
+        }
+
+        .animated-text {
+            font-size: 24px;
+            font-weight: bold;
+
+            animation: textColor 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes textColor {
+            from {
+                opacity: 0.4;
+                transform: scale(1);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+
+        /* =========================================================
+           QUESTION 7 - UI COMPONENTS
+        ========================================================= */
+
+        .ui-background {
+            padding: 40px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #dbeafe, #f3e8ff);
+        }
+
+        .ui-card {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .search-box button {
+            border: none;
+            background: #2563eb;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            background: #1d4ed8;
+        }
+
+        .ui-card select {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .ui-card select:focus {
+            border-color: #2563eb;
+            outline: none;
+        }
+
+
+        /* =========================================================
+           QUESTION 8 - BOX SIZING
+        ========================================================= */
+
+        .box-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            width: 300px;
+            padding: 30px;
+            border: 10px solid;
+            min-height: 200px;
+        }
+
+        .content-box {
+            box-sizing: content-box;
+            background: #dbeafe;
+            border-color: #2563eb;
+        }
+
+        .border-box {
+            box-sizing: border-box;
+            background: #fee2e2;
+            border-color: #dc2626;
+        }
+
+
+        /* =========================================================
+           QUESTION 9 - COMBINED EFFECTS
+        ========================================================= */
+
+        .effects-container {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .effect-card {
+            width: 200px;
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px;
+            background: #eff6ff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+            transition: all 0.3s ease;
+        }
+
+        .effect-card:hover {
+            background: #2563eb;
+            color: white;
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+
+
+        /* =========================================================
+           QUESTION 10 - MINI UI
+        ========================================================= */
+
+        .mini-ui {
+            max-width: 700px;
+            margin: auto;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .mini-header {
+            background: #2563eb;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .mini-content {
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .mini-image {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .mini-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .mini-form {
+            flex: 1;
+            min-width: 250px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mini-form input,
+        .mini-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .mini-form input:focus,
+        .mini-form textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .submit-btn {
+            padding: 12px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .mini-footer {
+            background: #f1f5f9;
+            text-align: center;
+            padding: 15px;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE DESIGN
+        ========================================================= */
+
+        @media (max-width: 700px) {
+
+            main {
+                width: 95%;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .pseudo-container {
+                flex-direction: column;
+            }
+
+            .animation-container {
+                flex-direction: column;
+                gap: 50px;
+            }
+
+            .box-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .effects-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .mini-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <header>
+        <h1>CSS Assignment - Assignment 8</h1>
+        <p>HTML & CSS Demonstration</p>
+    </header>
+
+
+    <main>
+
+        <!-- =====================================================
+             QUESTION 1
+        ====================================================== -->
+
+        <section>
+            <h2>1. Pseudo-Classes Demonstration</h2>
+
+            <div class="pseudo-container">
+
+                <div class="pseudo-box">
+                    <h3>:hover</h3>
+                    <p>Move your mouse over the link.</p>
+                    <a href="#">Hover Me</a>
+                </div>
+
+                <div class="pseudo-box">
+                    <h3>:focus</h3>
+                    <p>Click inside the input box.</p>
+                    <input type="text" placeholder="Focus Me">
+                </div>
+
+                <div class="pseudo-box">
+                    <h3>:active</h3>
+                    <p>Hold the button down.</p>
+                    <button>Click Me</button>
+                </div>
+
+                <div class="pseudo-box">
+                    <h3>:nth-child()</h3>
+                    <p>Every odd item has a different color.</p>
+
+                    <ul class="nth-list">
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
+                        <li>Item 4</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             QUESTION 2
+        ====================================================== -->
+
+        <section>
+            <h2>2. Tooltip Demonstration</h2>
+
+            <div class="tooltip-container">
+
+                <div class="tooltip">
+                    Home
+                    <span class="tooltip-text">
+                        Go to Home
+                    </span>
+                </div>
+
+                <div class="tooltip">
+                    Profile
+                    <span class="tooltip-text">
+                        View Profile
+                    </span>
+                </div>
+
+                <div class="tooltip">
+                    Settings
+                    <span class="tooltip-text">
+                        Open Settings
+                    </span>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             QUESTION 3
+        ====================================================== -->
+
+        <section>
+            <h2>3. Image Showcase Layout</h2>
+
+            <div class="gallery">
+
+                <figure>
+                    <div class="image-box">
+                        <img src="https://picsum.photos/500/300?random=1"
+                             alt="Nature">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <figcaption>Nature</figcaption>
+                </figure>
+
+                <figure>
+                    <div class="image-box">
+                        <img src="https://picsum.photos/500/300?random=2"
+                             alt="Mountain">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <figcaption>Mountain</figcaption>
+                </figure>
+
+                <figure>
+                    <div class="image-box">
+                        <img src="https://picsum.photos/500/300?random=3"
+                             alt="City">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <figcaption>City</figcaption>
+                </figure>
+
+                <figure>
+                    <div class="image-box">
+                        <img src="https://picsum.photos/500/300?random=4"
+                             alt="Ocean">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <figcaption>Ocean</figcaption>
+                </figure>
+
+                <figure>
+                    <div class="image-box">
+                        <img src="https://picsum.photos/500/300?random=5"
+                             alt="Forest">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <figcaption>Forest</figcaption>
+                </figure>
+
+                <figure>
+                    <div class="image-box">
+                        <img src="https://picsum.photos/500/300?random=6"
+                             alt="Desert">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <figcaption>Desert</figcaption>
+                </figure>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             QUESTION 4
+        ====================================================== -->
+
+        <section>
+            <h2>4. CSS Selectors Practice</h2>
+
+            <div class="selector-area">
+
+                <p>This paragraph demonstrates an element selector.</p>
+
+                <p class="highlight">
+                    This paragraph demonstrates a class selector.
+                </p>
+
+                <p id="special-text">
+                    This paragraph demonstrates an ID selector.
+                </p>
+
+                <a href="#" target="_blank">
+                    Attribute selector example
+                </a>
+
+                <ul class="selector-list">
+                    <li>Child selector example</li>
+                    <li>Another list item</li>
+                    <li>Third list item</li>
+                </ul>
+
+                <p>
+                    This paragraph demonstrates the adjacent sibling selector.
+                </p>
+
+                <p class="sibling-test">
+                    General sibling starting point.
+                </p>
+
+                <p>
+                    General sibling selector example.
+                </p>
+
+                <p>
+                    Another general sibling example.
+                </p>
+
+                <div>
+                    <p>
+                        This paragraph demonstrates a descendant selector.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             QUESTION 5
+        ====================================================== -->
+
+        <section>
+            <h2>5. Styled Button Collection</h2>
+
+            <div class="button-container">
+
+                <button class="btn primary">
+                    Primary
+                </button>
+
+                <button class="btn secondary">
+                    Secondary
+                </button>
+
+                <button class="btn outline">
+                    Outline
+                </button>
+
+                <button class="btn" disabled>
+                    Disabled
+                </button>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             QUESTION 6
+        ====================================================== -->
+
+        <section>
+            <h2>6. CSS Animation Demonstration</h2>
+
+            <div class="animation-container">
+
+                <div>
+                    <p>Moving Box</p>
+                    <div class="moving-box"></div>
+                </div>
+
+                <div>
+                    <p>Bouncing Ball</p>
+                    <div class="ball"></div>
+                </div>
+
+                <div>
+                    <p class="animated-text">
+                        Animated Text
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             QUESTION 7
+        ====================================================== -->
+
+        <section>
+            <h2>7. User Interface Components</h2>
+
+            <div class="ui-background">
+
+                <div class="ui-card">
+
+                    <h3>Search Interface</h3>
+
+                    <div class="search-box">
+                        <input
+                            type="search"
+                            placeholder="Search something..."
+                        >
+
+                        <button>
+                            Search
+                        </button>
+                    </div>
+
+                    <label for="category">
+                        Select Category
+                    </label>
+
+                    <select id="category">
+                        <option>Web Development</option>
+                        <option>Design</option>
+                        <option>Programming</option>
+                        <option>Technology</option>
+                    </select>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             QUESTION 8
+        ====================================================== -->
+
+        <section>
+            <h2>8. Box-Sizing Comparison</h2>
+
+            <div class="box-container">
+
+                <div class="box content-box">
+                    <h3>content-box</h3>
+
+                    <p>
+                        Width applies only to the content.
+                        Padding and border are added to the total size.
+                    </p>
+                </div>
+
+                <div class="box border-box">
+                    <h3>border-box</h3>
+
+                    <p>
+                        Width includes content, padding and border.
+                        This makes sizing easier to control.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             QUESTION 9
+        ====================================================== -->
+
+        <section>
+            <h2>9. Combined Effects Demonstration</h2>
+
+            <div class="effects-container">
+
+                <div class="effect-card">
+                    <h3>Hover Card</h3>
+                    <p>
+                        Hover over me to see transition,
+                        transformation and shadow effects.
+                    </p>
+                </div>
+
+                <div class="effect-card">
+                    <h3>Transform</h3>
+                    <p>
+                        This card grows and moves upward.
+                    </p>
+                </div>
+
+                <div class="effect-card">
+                    <h3>Transition</h3>
+                    <p>
+                        All effects happen smoothly.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             QUESTION 10
+        ====================================================== -->
+
+        <section>
+            <h2>10. Complete Mini User Interface</h2>
+
+            <div class="mini-ui">
+
+                <div class="mini-header">
+                    <h2>Contact Us</h2>
+                </div>
+
+                <div class="mini-content">
+
+                    <div class="mini-image">
+                        <img
+                            src="https://picsum.photos/500/350?random=20"
+                            alt="Contact image"
+                        >
+                    </div>
+
+                    <form class="mini-form">
+
+                        <input
+                            type="text"
+                            placeholder="Your Name"
+                            required
+                        >
+
+                        <input
+                            type="email"
+                            placeholder="Your Email"
+                            required
+                        >
+
+                        <textarea
+                            rows="5"
+                            placeholder="Your Message"
+                        ></textarea>
+
+                        <button
+                            type="submit"
+                            class="submit-btn"
+                        >
+                            Submit
+                        </button>
+
+                    </form>
+
+                </div>
+
+                <div class="mini-footer">
+                    <p>&copy; 2026 My Website</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer>
+        <p>CSS Assignment 8 | HTML & CSS Only</p>
+    </footer>
+
+</body>
+</html>
