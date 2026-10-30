@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment 7 - Combined Demo</title>
+  <style>
+    body { margin:0; font-family:Arial, sans-serif; }
+    section { padding:20px; border-bottom:2px solid #ccc; }
+
+    /* 1. Borders & Padding */
+    #borders { display:flex; gap:20px; }
+    .box { padding:20px; transition:0.3s; }
+    .solid { border:3px solid #333; }
+    .dashed { border:3px dashed #333; }
+    .double { border:5px double #333; }
+    .groove { border:5px groove #333; }
+    .rounded { border:3px solid #333; border-radius:15px; }
+    .box:hover { border-color:red; }
+
+    /* 2. Height & Width */
+    #sizes { display:flex; justify-content:center; align-items:center; gap:20px; height:50vh; }
+    .s1 { width:200px; height:100px; background:#f88; }
+    .s2 { width:50%; min-height:150px; background:#8f8; overflow:auto; }
+    .s3 { width:10em; height:20vh; max-width:300px; background:#88f; }
+
+    /* 3. Gradient Background */
+    #gradients header, #gradients footer { position:fixed; left:0; right:0; background:#222; color:#fff; text-align:center; padding:10px; }
+    #gradients header { top:0; }
+    #gradients footer { bottom:0; }
+    .linear { background:linear-gradient(to right, #ff7e5f, #feb47b); height:200px; }
+    .radial { background:radial-gradient(circle, #43cea2, #185a9d); height:200px; background-attachment:fixed; }
+
+    /* 4. Shadows & Depth */
+    #shadows { display:flex; gap:20px; }
+    .card { flex:1; padding:20px; background:#fff; box-shadow:2px 2px 5px #aaa; transition:0.3s; }
+    .card:hover { box-shadow:5px 5px 15px #555; transform:translateY(-5px); }
+    #shadows h3 { text-shadow:2px 2px 3px #aaa; }
+
+    /* 5. Advanced Selectors */
+    #selectors ul li:nth-child(odd){ background:#eee; }
+    #selectors input[type="text"]{ border:2px solid blue; }
+    #selectors a[href^="https"]{ color:green; }
+    #selectors p::before{ content:"★ "; color:red; }
+    #selectors p::after{ content:" ✓"; color:blue; }
+
+    /* 6. Transformations */
+    #transforms { display:flex; gap:20px; }
+    .tbox { width:100px; height:100px; background:#ddd; display:flex; justify-content:center; align-items:center; transition:all 0.4s ease; }
+    .rotate:hover { transform:rotate(20deg); }
+    .scale:hover { transform:scale(1.2); }
+    .translate:hover { transform:translateX(20px); }
+    .skew:hover { transform:skew(20deg); }
+
+    /* 7. Typography */
+    #typography article { line-height:1.6; letter-spacing:1px; text-align:justify; }
+    #typography mark { background:yellow; color:red; }
+    #typography strong { color:blue; }
+    #typography em { color:green; }
+    #typography p::first-letter { font-size:200%; }
+    #typography p::first-line { font-weight:bold; }
+
+    /* 8. Box Model */
+    #boxmodel { display:flex; justify-content:center; align-items:center; }
+    .outer { margin:20px; padding:20px; border:5px solid #333; background:#eee; }
+    .inner { background:#ccc; padding:10px; }
+    .borderbox { box-sizing:border-box; width:200px; padding:20px; border:10px solid #333; background:#fdd; }
+
+    /* 9. Outline & Focus Form */
+    #formdemo form { display:flex; flex-direction:column; gap:10px; width:300px; }
+    input, textarea { padding:10px; border-radius:5px; box-shadow:1px 1px 3px #aaa; outline:2px solid transparent; outline-offset:2px; }
+    input:focus, textarea:focus { outline-color:blue; }
+
+    /* 10. Navbar */
+    #navbar nav { display:flex; justify-content:center; gap:20px; background:#222; padding:10px; }
+    #navbar nav a { color:#fff; padding:10px; border:1px solid #444; transition:all 0.3s ease; text-decoration:none; }
+    #navbar nav a:hover { background:#444; }
+    #navbar nav a.active { background:#f00; }
+    @media(max-width:700px){ #navbar nav{flex-direction:column; align-items:center;} }
+    #navbar footer { text-align:center; padding:10px; background:#222; color:#fff; }
+  </style>
+</head>
+<body>
+
+<section id="borders">
+  <div class="box solid">Solid</div>
+  <div class="box dashed">Dashed</div>
+  <div class="box double">Double</div>
+  <div class="box groove">Groove</div>
+  <div class="box rounded">Rounded</div>
+</section>
+
+<section id="sizes">
+  <div class="s1">Box px</div>
+  <div class="s2">Box %</div>
+  <div class="s3">Box em/vh</div>
+</section>
+
+<section id="gradients">
+  <header>Fixed Header</header>
+  <div class="linear">Linear Gradient Section</div>
+  <div class="radial">Radial Gradient Section</div>
+  <footer>Fixed Footer</footer>
+</section>
+
+<section id="shadows">
+  <div class="card"><h3>Card 1</h3><p>Shadow style</p></div>
+  <div class="card"><h3>Card 2</h3><p>Shadow style</p></div>
+  <div class="card"><h3>Card 3</h3><p>Shadow style</p></div>
+</section>
+
+<section id="selectors">
+  <ul>
+    <li>Item 1</li><li>Item 2</li><li>Item 3</li>
+  </ul>
+  <input type="text" placeholder="Text input">
+  <a href="https://example.com">Secure Link</a>
+  <p>Paragraph with pseudo-elements</p>
+</section>
+
+<section id="transforms">
+  <div class="tbox rotate">Rotate</div>
+  <div class="tbox scale">Scale</div>
+  <div class="tbox translate">Translate</div>
+  <div class="tbox skew">Skew</div>
+</section>
+
+<section id="typography">
+  <article>
+    <p><mark>Highlighted</mark> text with <strong>strong</strong> and <em>emphasis</em>. This is a demo article showing font families, weights, and sizes.</p>
+  </article>
+</section>
+
+<section id="boxmodel">
+  <div class="outer">
+    <div class="inner">Content + Padding + Border + Margin</div>
+  </div>
+  <div class="borderbox">Border-box sizing demo</div>
+</section>
+
+<section id="formdemo">
+  <form>
+    <input type="text" placeholder="Name">
+    <input type="email" placeholder="Email">
+    <textarea placeholder="Message"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+<section id="navbar">
+  <nav>
+    <a href="#" class="active">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Blog</a>
+    <a href="#">Contact</a>
+  </nav>
+  <footer>Footer Text</footer>
+</section>
+
+</body>
+</html>
