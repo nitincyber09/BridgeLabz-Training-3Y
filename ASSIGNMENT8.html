@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment 9 - Responsive CSS Combined</title>
+  <style>
+    body { margin:0; font-family:Arial, sans-serif; }
+    section { padding:20px; border-bottom:2px solid #ccc; }
+
+    /* Q1. Responsive Image Filter Gallery */
+    #gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; }
+    #gallery figure { margin:0; text-align:center; }
+    #gallery img { width:100%; transition:0.3s; }
+    .blur { filter:blur(3px); }
+    .grayscale { filter:grayscale(100%); }
+    .sepia { filter:sepia(100%); }
+    .bright { filter:brightness(0.5); }
+    .contrast { filter:contrast(200%); }
+    .hue { filter:hue-rotate(90deg); }
+    #gallery img:hover { filter:none; }
+    @media(max-width:600px){ #gallery{grid-template-columns:1fr;} }
+
+    /* Q2. Responsive Web Design Layout */
+    #homepage header { display:flex; justify-content:space-between; align-items:center; background:#222; color:#fff; padding:10px; }
+    #homepage nav a { color:#fff; margin:0 10px; text-decoration:none; }
+    #homepage main { display:flex; gap:20px; padding:20px; }
+    #homepage .feature { flex:1; background:#eee; padding:20px; transition:0.3s; }
+    #homepage .feature:hover { transform:scale(1.05); }
+    #homepage footer { text-align:center; background:#222; color:#fff; padding:10px; }
+    @media(max-width:750px){ #homepage main{flex-direction:column;} }
+
+    /* Q3. Responsive Cards */
+    #cards { display:flex; gap:20px; padding:20px; }
+    .card { flex:1; background:#ddd; padding:20px; transition:0.3s; }
+    .card:hover { background:#bbb; }
+    @media(max-width:900px){ #cards{flex-wrap:wrap;} .card{flex:0 0 48%;} }
+    @media(max-width:600px){ .card{flex:0 0 100%;} }
+
+    /* Q4. Responsive Typography */
+    #typography h1 { font-size:clamp(1.5rem,4vw,3rem); text-align:center; }
+    #typography p { font-size:clamp(1rem,2vw,1.5rem); text-align:center; margin:20px; }
+    @media(max-width:700px){ #typography p{line-height:1.8;} }
+
+    /* Q5. Filter Cards with Animation */
+    #filtercards { display:flex; gap:20px; padding:20px; animation:fadein 1s; }
+    .fcard { flex:1; background:#eee; padding:20px; transition:0.3s; }
+    .fcard img { width:100%; filter:grayscale(100%); transition:0.3s; }
+    .fcard:hover img { filter:none; }
+    .fcard:hover { transform:translateY(-10px); }
+    @keyframes fadein { from{opacity:0;} to{opacity:1;} }
+    @media(max-width:800px){ #filtercards{flex-direction:column;} }
+
+    /* Q6. Responsive CSS Cheat Sheet */
+    #cheatsheet { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; padding:20px; }
+    .sheet { background:#eee; padding:20px; transition:0.3s; }
+    .sheet:hover { background:#ddd; }
+    @media(max-width:700px){ #cheatsheet{grid-template-columns:1fr;} }
+
+    /* Q7. Combined Responsive Web Demo */
+    #demo header { display:flex; justify-content:space-between; background:#222; color:#fff; padding:10px; }
+    #demo main { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; padding:20px; animation:fadein 1s; }
+    #demo footer { background:#222; color:#fff; text-align:center; padding:10px; }
+    .demo-box { background:#eee; padding:20px; transition:0.3s; }
+    .demo-box:hover { background:#ddd; }
+    @media(max-width:700px){ #demo main{grid-template-columns:1fr;} }
+
+    /* Q8. Filter Comparison Layout */
+    #compare { display:flex; gap:20px; padding:20px; }
+    #compare img { width:100%; transition:0.3s; }
+    .filtered { filter:brightness(0.5); }
+    .filtered:hover { filter:none; }
+    @media(max-width:700px){ #compare{flex-direction:column;} }
+
+    /* Q9. Responsive Design Principles */
+    #principles { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; padding:20px; }
+    .pbox { background:#eee; padding:20px; transition:0.3s; }
+    .pbox:hover { background:linear-gradient(to right,#ff7e5f,#feb47b); color:#fff; }
+    @media(max-width:600px){ #principles{grid-template-columns:1fr;} }
+
+    /* Q10. Responsive Dashboard */
+    #dashboard { display:grid; grid-template-columns:200px 1fr; gap:20px; padding:20px; animation:fadein 1s; }
+    #dashboard header { grid-column:1/3; background:#222; color:#fff; padding:10px; }
+    #dashboard aside { background:#eee; padding:20px; }
+    #dashboard main { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; }
+    .dcard { background:#ddd; padding:20px; transition:0.3s; }
+    .dcard:hover { transform:scale(1.05); box-shadow:2px 2px 5px #aaa; }
+    @media(max-width:750px){ #dashboard{grid-template-columns:1fr;} #dashboard aside{grid-column:1/2;} }
+  </style>
+</head>
+<body>
+
+<section id="gallery">
+  <figure><img src="img1.jpg" class="blur"><figcaption>Blur</figcaption></figure>
+  <figure><img src="img2.jpg" class="grayscale"><figcaption>Grayscale</figcaption></figure>
+  <figure><img src="img3.jpg" class="sepia"><figcaption>Sepia</figcaption></figure>
+  <figure><img src="img4.jpg" class="bright"><figcaption>Brightness</figcaption></figure>
+  <figure><img src="img5.jpg" class="contrast"><figcaption>Contrast</figcaption></figure>
+  <figure><img src="img6.jpg" class="hue"><figcaption>Hue Rotate</figcaption></figure>
+</section>
+
+<section id="homepage">
+  <header><h2>Logo</h2><nav><a href="#">Home</a><a href="#">About</a><a href="#">Contact</a></nav></header>
+  <main><div class="feature">Feature 1</div><div class="feature">Feature 2</div><div class="feature">Feature 3</div></main>
+  <footer>Footer</footer>
+</section>
+
+<section id="cards">
+  <div class="card">Card 1</div><div class="card">Card 2</div><div class="card">Card 3</div><div class="card">Card 4</div>
+</section>
+
+<section id="typography">
+  <h1>Responsive Heading</h1>
+  <p>This paragraph scales with clamp().</p>
+</section>
+
+<section id="filtercards">
+  <div class="fcard"><img src="p1.jpg"><p>Profile 1</p></div>
+  <div class="fcard"><img src="p2.jpg"><p>Profile 2</p></div>
+  <div class="fcard"><img src="p3.jpg"><p>Profile 3</p></div>
+</section>
+
+<section id="cheatsheet">
+  <div class="sheet"><h3>Filters</h3><p>CSS filter examples</p></div>
+  <div class="sheet"><h3>Media Queries</h3><p>@media rules</p></div>
+  <div class="sheet"><h3>Responsive Design</h3><p>Flex/Grid layouts</p></div>
+  <div class="sheet"><h3>Typography</h3><p>Clamp units</p></div>
+</section>
+
+<section id="demo">
+  <header><h2>Responsive
+    <section id="demo">
+  <header><h2>Responsive Demo</h2><nav><a href="#">Home</a><a href="#">About</a><a href="#">Contact</a></nav></header>
+  <main>
+    <div class="demo-box">Image Gallery Section</div>
+    <div class="demo-box">Responsive Design Explanation</div>
+    <div class="demo-box">Cheat Sheet Preview</div>
+  </main>
+  <footer>Contact Info</footer>
+</section>
+
+<section id="compare">
+  <div>
+    <img src="before.jpg" alt="Before">
+    <p>Original Image</p>
+  </div>
+  <div>
+    <img src="after.jpg" class="filtered" alt="After">
+    <p>Filtered Image</p>
+  </div>
+</section>
+
+<section id="principles">
+  <div class="pbox"><h3>Fluid Layouts</h3><p>Use relative units for widths.</p><code>width: 80%;</code></div>
+  <div class="pbox"><h3>Flexible Media</h3><p>Images scale with max-width.</p><code>img{max-width:100%;}</code></div>
+  <div class="pbox"><h3>Breakpoints</h3><p>Adapt layout with media queries.</p><code>@media(max-width:600px){...}</code></div>
+</section>
+
+<section id="dashboard">
+  <header>Dashboard Header</header>
+  <aside>Sidebar Navigation</aside>
+  <main>
+    <div class="dcard">Filters</div>
+    <div class="dcard">Typography</div>
+    <div class="dcard">Media Queries</div>
+    <div class="dcard">Cheat Sheet Links</div>
+  </main>
+</section>
+
+</body>
+</html>
