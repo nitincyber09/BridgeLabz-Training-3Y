@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bootstrap Assignment 10</title>
+
+    <!-- Bootstrap 5 CDN -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =====================================================
+           GLOBAL CSS
+        ===================================================== */
+
+        :root {
+            --bs-primary: #6f42c1;
+            --bs-font-sans-serif: 'Poppins', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f7fb;
+            color: #212529;
+        }
+
+        section {
+            padding: 70px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        .custom-card {
+            transition: all 0.3s ease;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12) !important;
+        }
+
+        .rounded-image {
+            object-fit: cover;
+        }
+
+        footer {
+            background: #212529;
+            color: white;
+        }
+
+
+        /* =====================================================
+           QUESTION 1 - COMPANY LANDING PAGE
+        ===================================================== */
+
+        .hero {
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(
+                    rgba(20, 30, 50, 0.75),
+                    rgba(20, 30, 50, 0.75)
+                ),
+                url("https://picsum.photos/1600/700?random=10")
+                center/cover;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           QUESTION 2 - PORTFOLIO
+        ===================================================== */
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border: 6px solid white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+
+        /* =====================================================
+           QUESTION 3 - PRODUCT CATALOG
+        ===================================================== */
+
+        .product-card img {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .product-card {
+            transition: 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+
+        /* =====================================================
+           QUESTION 4 - RESTAURANT
+        ===================================================== */
+
+        .food-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+
+        /* =====================================================
+           QUESTION 5 - BLOG
+        ===================================================== */
+
+        .blog-card img {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .blog-title {
+            color: var(--bs-primary);
+        }
+
+
+        /* =====================================================
+           QUESTION 6 - NOTIFICATIONS
+        ===================================================== */
+
+        .notification-card {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .summary-box {
+            border: 1px solid #dee2e6;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+
+        /* =====================================================
+           QUESTION 7 - TASK TRACKER
+        ===================================================== */
+
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+
+        /* =====================================================
+           QUESTION 8 - PRICING
+        ===================================================== */
+
+        .pricing-card {
+            transition: 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18) !important;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           QUESTION 9 - PAGINATION
+        ===================================================== */
+
+        .pagination .page-link {
+            color: var(--bs-primary);
+        }
+
+        .pagination .active .page-link {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+            color: white;
+        }
+
+
+        /* =====================================================
+           QUESTION 10 - TRAVEL
+        ===================================================== */
+
+        .travel-carousel img {
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.55);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE CSS
+        ===================================================== */
+
+        @media (max-width: 768px) {
+
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero {
+                text-align: center;
+            }
+
+            .travel-carousel img {
+                height: 350px;
+            }
+
+            .task-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER / NAVBAR
+========================================================= -->
+
+<header>
+
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand fw-bold" href="#">
+                TechNova
+            </a>
+
+            <!-- Bootstrap responsive menu button -->
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div
+                class="collapse navbar-collapse"
+                id="mainNavbar"
+            >
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#q1">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#q2">
+                            Portfolio
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#q3">
+                            Products
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#q8">
+                            Pricing
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#q10">
+                            Travel
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+
+<!-- =========================================================
+     QUESTION 1
+     COMPANY LANDING PAGE
+========================================================= -->
+
+<section id="q1" class="hero">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-8">
+
+                <span class="badge bg-primary mb-3">
+                    Bootstrap 5
+                </span>
+
+                <h1>
+                    Build Your Future With TechNova
+                </h1>
+
+                <p class="lead">
+                    We create modern digital solutions for businesses,
+                    startups and creative professionals.
+                </p>
+
+                <a href="#q2" class="btn btn-primary btn-lg mt-3">
+                    Get Started
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     QUESTION 2
+     PERSONAL PORTFOLIO
+========================================================= -->
+
+<section id="q2">
+
+    <div class="container text-center">
+
+        <h2 class="section-title">
+            My Portfolio
+        </h2>
+
+        <div class="bg-light text-dark p-5 rounded">
+
+            <img
+                src="https://picsum.photos/300/300?random=20"
+                alt="Profile"
+                class="img-fluid rounded-circle profile-image mb-4"
+            >
+
+            <h2 class="fw-bold">
+                Devid Singh
+            </h2>
+
+            <p class="lead">
+                Web Developer & Creative Designer
+            </p>
+
+            <p class="mb-4">
+                I create responsive and user-friendly websites
+                using modern web technologies.
+            </p>
+
+            <div class="mb-4">
+
+                <button class="btn btn-primary me-2">
+                    Hire Me
+                </button>
+
+                <button class="btn btn-outline-dark">
+                    Download CV
+                </button>
+
+            </div>
+
+
+            <!-- Contact Form -->
+
+            <div class="row justify-content-center">
+
+                <div class="col-md-7">
+
+                    <form>
+
+                        <div class="mb-3 text-start">
+                            <label class="form-label">
+                                Name
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter your name"
+                            >
+                        </div>
+
+                        <div class="mb-3 text-start">
+                            <label class="form-label">
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                class="form-control"
+                                placeholder="Enter your email"
+                            >
+                        </div>
+
+                        <div class="mb-3 text-start">
+                            <label class="form-label">
+                                Message
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                rows="4"
+                                placeholder="Write your message"
+                            ></textarea>
+                        </div>
+
+                        <button class="btn btn-primary">
+                            Send Message
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     QUESTION 3
+     PRODUCT CATALOG
+========================================================= -->
+
+<section id="q3">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Product Catalog
+        </h2>
+
+        <div class="row g-4">
+
+            <!-- Product 1 -->
+            <div class="col-12 col-sm-6 col-md-3">
+
+                <div class="card product-card shadow-sm h-100">
+
+                    <img
+                        src="https://picsum.photos/500/350?random=31"
+                        class="card-img-top"
+                        alt="Laptop"
+                    >
+
+                    <div class="card-body text-center">
+
+                        <h5 class="card-title">
+                            Laptop
+                        </h5>
+
+                        <p class="text-muted">
+                            ₹55,999
+                        </p>
+
+                        <button class="btn btn-primary">
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 2 -->
+            <div class="col-12 col-sm-6 col-md-3">
+
+                <div class="card product-card shadow-sm h-100">
+
+                    <img
+                        src="https://picsum.photos/500/350?random=32"
+                        class="card-img-top"
+                        alt="Headphones"
+                    >
+
+                    <div class="card-body text-center">
+
+                        <h5 class="card-title">
+                            Headphones
+                        </h5>
+
+                        <p class="text-muted">
+                            ₹2,999
+                        </p>
+
+                        <button class="btn btn-primary">
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 3 -->
+            <div class="col-12 col-sm-6 col-md-3">
+
+                <div class="card product-card shadow-sm h-100">
+
+                    <img
+                        src="https://picsum.photos/500/350?random=33"
+                        class="card-img-top"
+                        alt="Smart Watch"
+                    >
+
+                    <div class="card-body text-center">
+
+                        <h5 class="card-title">
+                            Smart Watch
+                        </h5>
+
+                        <p class="text-muted">
+                            ₹4,499
+                        </p>
+
+                        <button class="btn btn-primary">
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 4 -->
+            <div class="col-12 col-sm-6 col-md-3">
+
+                <div class="card product-card shadow-sm h-100">
+
+                    <img
+                        src="https://picsum.photos/500/350?random=34"
+                        class="card-img-top"
+                        alt="Camera"
+                    >
+
+                    <div class="card-body text-center">
+
+                        <h5 class="card-title">
+                            Camera
+                        </h5>
+
+                        <p class="text-muted">
+                            ₹39,999
+                        </p>
+
+                        <button class="btn btn-primary">
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     QUESTION 4
+     RESTAURANT MENU
+========================================================= -->
+
+<section id="q4">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Today's Menu
+        </h2>
+
+        <p class="lead text-center mb-5">
+            Fresh ingredients, delicious flavors and traditional recipes.
+        </p>
+
+        <div class="row g-4">
+
+            <div class="col-lg-8">
+
+                <!-- Bootstrap Table -->
+
+                <div class="table-responsive">
+
+                    <table class="table table-striped table-hover">
+
+                        <thead class="table-dark">
+
+                            <tr>
+                                <th>Item</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Paneer Tikka</td>
+                                <td>Starter</td>
+                                <td>₹220</td>
+                            </tr>
+
+                            <tr>
+                                <td>Butter Chicken</td>
+                                <td>Main Course</td>
+                                <td>₹350</td>
+                            </tr>
+
+                            <tr>
+                                <td>Veg Biryani</td>
+                                <td>Main Course</td>
+                                <td>₹250</td>
+                            </tr>
+
+                            <tr>
+                                <td>Gulab Jamun</td>
+                                <td>Dessert</td>
+                                <td>₹120</td>
+                            </tr>
+
+                            <tr>
+                                <td>Masala Chai</td>
+                                <td>Beverage</td>
+                                <td>₹60</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-4">
+
+                <h4 class="mb-3">
+                    Chef's Specials
+                </h4>
+
+                <!-- Bootstrap List Group -->
+
+                <ul class="list-group mb-4">
+
+                    <li class="list-group-item">
+                        Special Paneer Curry
+                    </li>
+
+                    <li class="list-group-item">
+                        Tandoori Platter
+                    </li>
+
+                    <li class="list-group-item">
+                        Royal Biryani
+                    </li>
+
+                </ul>
+
+                <figure>
+
+                    <img
+                        src="https://picsum.photos/600/400?random=40"
+                        alt="Delicious Food"
+                        class="img-fluid rounded food-image"
+                    >
+
+                    <figcaption class="text-center mt-2">
+                        Freshly prepared special dish
+                    </figcaption>
+
+                </figure>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     QUESTION 5
+     CUSTOM THEMED BLOG
+========================================================= -->
+
+<section id="q5">
+
+    <div class="container">
+
+        <h2
+            class="section-title blog-title"
+        >
+            TechNova Blog
+        </h2>
+
+        <div class="row g-4">
+
+            <!-- Blog 1 -->
+
+            <div class="col-md-6">
+
+                <article class="card blog-card custom-card shadow-sm">
+
+                    <img
+                        src="https://picsum.photos/700/400?random=51"
+                        class="card-img-top"
+                        alt="Web Development"
+                    >
+
+                    <div class="card-body">
+
+                        <span class="badge bg-primary mb-2">
+                            Development
+                        </span>
+
+                        <h3 class="card-title blog-title">
+                            The Future of Web Development
+                        </h3>
+
+                        <p class="card-text">
+                            Learn about modern web development trends,
+                            responsive design and better user experiences.
+                        </p>
+
+                        <a href="#" class="btn btn-primary">
+                            Read More
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- Blog 2 -->
+
+            <div class="col-md-6">
+
+                <article class="card blog-card custom-card shadow-sm">
+
+                    <img
+                        src="https://picsum.photos/700/400?random=52"
+                        class="card-img-top"
+                        alt="Technology"
+                    >
+
+                    <div class="card-body">
+
+                        <span class="badge bg-primary mb-2">
+                            Technology
+                        </span>
+
+                        <h3 class="card-title blog-title">
+                            Technology That Changes Business
+                        </h3>
+
+                        <p class="card-text">
+                            Discover how modern technologies help businesses
+                            grow faster and serve customers better.
+                        </p>
+
+                        <a href="#" class="btn btn-primary">
+                            Read More
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     QUESTION 6
+     NOTIFICATIONS DASHBOARD
+========================================================= -->
+
+<section id="q6">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Notifications Dashboard
+        </h2>
+
+        <div class="card shadow-sm notification-card">
+
+            <div class="card-body">
+
+                <h4 class="mb-4">
+                    Your Notifications
+                </h4>
+
+                <!-- Success Alert -->
+
+                <div class="alert alert-success">
+                    <strong>Success!</strong>
+                    Your profile has been updated successfully.
+                </div>
+
+                <!-- Info Alert -->
+
+                <div class="alert alert-info">
+                    <strong>Tip:</strong>
+                    Complete your profile to improve visibility.
+                </div>
+
+                <!-- Danger Alert -->
+
+                <div class="alert alert-danger">
+                    <strong>Warning!</strong>
+                    Your password will expire soon.
+                </div>
+
+                <!-- Dismissible Alert -->
+
+                <div
+                    class="alert alert-warning alert-dismissible fade show"
+                    role="alert"
+                >
+
+                    This is a dismissible notification.
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                    ></button>
+
+                </div>
+
+
+                <!-- Summary Well -->
+
+                <div class="summary-box mt-4">
+
+                    <h5>
+                        Summary
+                    </h5>
+
+                    <p class="mb-0">
+                        You have 4 notifications, 2 pending tasks
+                        and 1 important warning.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     QUESTION 7
+     TASK TRACKER
+========================================================= -->
+
+<section id="q7">
+
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h2 class="mb-0">
+                Task Tracker
+            </h2>
+
+            <span class="badge bg-danger fs-6">
+                Pending: 4
+            </span>
+
+        </div>
+
+
+        <!-- Bootstrap List Group -->
+
+        <div class="list-group">
+
+            <div class="list-group-item task-item">
+
+                <span>
+                    Complete website design
+                </span>
+
+                <span class="badge bg-danger">
+                    High
+                </span>
+
+            </div>
+
+
+            <div class="list-group-item task-item">
+
+                <span>
+                    Prepare project report
+                </span>
+
+                <span class="badge bg-warning text-dark">
+                    Medium
+                </span>
+
+            </div>
+
+
+            <div class="list-group-item task-item">
+
+                <span>
+                    Update documentation
+                </span>
+
+                <span class="badge bg-success">
+                    Low
+                </span>
+
+            </div>
+
+
+            <div class="list-group-item task-item">
+
+                <span>
+                    Test responsive layout
+                </span>
+
+                <span class="badge bg-danger">
+                    High
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="text-center mt-4">
+
+            <button class="btn btn-success">
+
+                Completed
+
+                <span class="badge bg-light text-success">
+                    8
+                </span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     QUESTION 8
+     PRICING PLANS
+========================================================= -->
+
+<section id="q8">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Choose Your Plan
+        </h2>
+
+        <div class="row g-4">
+
+
+            <!-- Basic -->
+
+            <div class="col-md-4">
+
+                <div class="card pricing-card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <h3>
+                            Basic
+                        </h3>
+
+                        <div class="price">
+                            ₹499
+                            <small class="text-muted fs-6">
+                                /month
+                            </small>
+                        </div>
+
+                        <hr>
+
+                        <ul class="list-unstyled">
+
+                            <li class="mb-2">
+                                ✓ 5 Projects
+                            </li>
+
+                            <li class="mb-2">
+                                ✓ 10 GB Storage
+                            </li>
+
+                            <li class="mb-2">
+                                ✓ Email Support
+                            </li>
+
+                        </ul>
+
+                        <button class="btn btn-outline-primary">
+                            Choose Plan
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Pro -->
+
+            <div class="col-md-4">
+
+                <div class="card pricing-card bg-primary text-white shadow-lg h-100">
+
+                    <div class="card-body text-center">
+
+                        <span class="badge bg-light text-primary mb-2">
+                            Popular
+                        </span>
+
+                        <h3>
+                            Pro
+                        </h3>
+
+                        <div class="price">
+                            ₹999
+                            <small class="fs-6">
+                                /month
+                            </small>
+                        </div>
+
+                        <hr>
+
+                        <ul class="list-unstyled">
+
+                            <li class="mb-2">
+                                ✓ Unlimited Projects
+                            </li>
+
+                            <li class="mb-2">
+                                ✓ 100 GB Storage
+                            </li>
+
+                            <li class="mb-2">
+                                ✓ Priority Support
+                            </li>
+
+                        </ul>
+
+                        <button class="btn btn-light text-primary">
+                            Choose Plan
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Premium -->
+
+            <div class="col-md-4">
+
+                <div class="card pricing-card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <h3>
+                            Premium
+                        </h3>
+
+                        <div class="price">
+                            ₹1,999
+                            <small class="text-muted fs-6">
+                                /month
+                            </small>
+                        </div>
+
+                        <hr>
+
+                        <ul class="list-unstyled">
+
+                            <li class="mb-2">
+                                ✓ Unlimited Projects
+                            </li>
+
+                            <li class="mb-2">
+                                ✓ 500 GB Storage
+                            </li>
+
+                            <li class="mb-2">
+                                ✓ 24/7 Support
+                            </li>
+
+                        </ul>
+
+                        <button class="btn btn-outline-primary">
+                            Choose Plan
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     QUESTION 9
+     BLOG PAGINATION
+========================================================= -->
+
+<section id="q9">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Blog Posts
+        </h2>
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+
+                <article class="card shadow-sm mb-4">
+
+                    <div class="card-body">
+
+                        <h3>
+                            Understanding Bootstrap Grid
+                        </h3>
+
+                        <p>
+                            Bootstrap provides a powerful responsive
+                            grid system that makes creating layouts easier.
+                        </p>
+
+                        <a href="#" class="btn btn-primary">
+                            Read Article
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Bootstrap Pagination -->
+
+                <nav aria-label="Blog navigation">
+
+                    <ul class="pagination justify-content-center">
+
+                        <li class="page-item disabled">
+
+                            <a class="page-link" href="#">
+                                Previous
+                            </a>
+
+                        </li>
+
+                        <li class="page-item active">
+
+                            <a class="page-link" href="#">
+                                1
+                            </a>
+
+                        </li>
+
+                        <li class="page-item">
+
+                            <a class="page-link" href="#">
+                                2
+                            </a>
+
+                        </li>
+
+                        <li class="page-item">
+
+                            <a class="page-link" href="#">
+                                Next
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+
+                <!-- Pager Buttons -->
+
+                <div class="d-flex justify-content-between mt-4">
+
+                    <button class="btn btn-outline-secondary">
+                        ← Older Posts
+                    </button>
+
+                    <button class="btn btn-outline-secondary">
+                        Newer Posts →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     QUESTION 10
+     TRAVEL AGENCY CAROUSEL
+========================================================= -->
+
+<section id="q10">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Explore The World
+        </h2>
+
+
+        <!-- Bootstrap Carousel -->
+
+        <div
+            id="travelCarousel"
+            class="carousel slide travel-carousel shadow-lg"
+            data-bs-ride="carousel"
+        >
+
+            <!-- Indicators -->
+
+            <div class="carousel-indicators">
+
+                <button
+                    type="button"
+                    data-bs-target="#travelCarousel"
+                    data-bs-slide-to="0"
+                    class="active"
+                ></button>
+
+                <button
+                    type="button"
+                    data-bs-target="#travelCarousel"
+                    data-bs-slide-to="1"
+                ></button>
+
+                <button
+                    type="button"
+                    data-bs-target="#travelCarousel"
+                    data-bs-slide-to="2"
+                ></button>
+
+            </div>
+
+
+            <!-- Slides -->
+
+            <div class="carousel-inner">
+
+                <!-- Slide 1 -->
+
+                <div
+                    class="carousel-item active"
+                    data-bs-interval="3000"
+                >
+
+                    <img
+                        src="https://picsum.photos/1600/700?random=71"
+                        class="d-block w-100"
+                        alt="Paris"
+                    >
+
+                    <div class="carousel-caption">
+
+                        <h3>
+                            Paris
+                        </h3>
+
+                        <p>
+                            Experience the romance and beauty of Paris.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Slide 2 -->
+
+                <div
+                    class="carousel-item"
+                    data-bs-interval="4000"
+                >
+
+                    <img
+                        src="https://picsum.photos/1600/700?random=72"
+                        class="d-block w-100"
+                        alt="Maldives"
+                    >
+
+                    <div class="carousel-caption">
+
+                        <h3>
+                            Maldives
+                        </h3>
+
+                        <p>
+                            Relax beside crystal-clear waters.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Slide 3 -->
+
+                <div
+                    class="carousel-item"
+                    data-bs-interval="5000"
+                >
+
+                    <img
+                        src="https://picsum.photos/1600/700?random=73"
+                        class="d-block w-100"
+                        alt="Switzerland"
+                    >
+
+                    <div class="carousel-caption">
+
+                        <h3>
+                            Switzerland
+                        </h3>
+
+                        <p>
+                            Discover beautiful mountains and landscapes.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Previous Button -->
+
+            <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#travelCarousel"
+                data-bs-slide="prev"
+            >
+
+                <span class="carousel-control-prev-icon"></span>
+
+                <span class="visually-hidden">
+                    Previous
+                </span>
+
+            </button>
+
+
+            <!-- Next Button -->
+
+            <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#travelCarousel"
+                data-bs-slide="next"
+            >
+
+                <span class="carousel-control-next-icon"></span>
+
+                <span class="visually-hidden">
+                    Next
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <!-- Booking Progress -->
+
+        <div class="mt-5">
+
+            <div class="d-flex justify-content-between mb-2">
+
+                <strong>
+                    Booking Completion
+                </strong>
+
+                <strong>
+                    70%
+                </strong>
+
+            </div>
+
+            <div
+                class="progress"
+                role="progressbar"
+                aria-label="Booking completion"
+                aria-valuenow="70"
+                aria-valuemin="0"
+                aria-valuemax="100"
+            >
+
+                <div
+                    class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                    style="width: 70%"
+                >
+                    70%
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="py-5">
+
+    <div class="container text-center">
+
+        <h4>
+            TechNova
+        </h4>
+
+        <p class="mb-2">
+            Modern digital solutions for modern businesses.
+        </p>
+
+        <p class="mb-0">
+            Email: info@technova.com |
+            Phone: +91 98765 43210
+        </p>
+
+        <hr class="my-4">
+
+        <p class="mb-0">
+            &copy; 2026 TechNova. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     BOOTSTRAP JAVASCRIPT
+     Required for Navbar and Carousel
+========================================================= -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+</body>
+</html>
